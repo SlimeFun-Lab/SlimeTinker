@@ -15,13 +15,7 @@ import io.github.sefiraat.slimetinker.utils.WorldUtils;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
-import org.bukkit.Color;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -80,13 +74,13 @@ public final class TickEvents {
             double x = ThreadLocalRandom.current().nextDouble(-2.5, 2.6);
             double y = ThreadLocalRandom.current().nextDouble(-2.5, 2.6);
             double z = ThreadLocalRandom.current().nextDouble(-2.5, 2.6);
-            location.getWorld().spawnParticle(Particle.REDSTONE, location.clone().add(x, y, z), 1, green);
+            location.getWorld().spawnParticle(Particle.DUST, location.clone().add(x, y, z), 1, green);
         }
         for (int i = 0; i <= 5; i++) {
             double x = ThreadLocalRandom.current().nextDouble(-2.5, 2.6);
             double y = ThreadLocalRandom.current().nextDouble(-2.5, 2.6);
             double z = ThreadLocalRandom.current().nextDouble(-2.5, 2.6);
-            location.getWorld().spawnParticle(Particle.REDSTONE, location.clone().add(x, y, z), 1, red);
+            location.getWorld().spawnParticle(Particle.DUST, location.clone().add(x, y, z), 1, red);
         }
         increaseEffect(PotionEffectType.SATURATION, friend.getPotionEffects(), 2);
     }
@@ -123,7 +117,7 @@ public final class TickEvents {
     }
 
     public static void headBillon(EventFriend friend) {
-        increaseEffect(PotionEffectType.FAST_DIGGING, friend.getPotionEffects());
+        increaseEffect(PotionEffectType.HASTE, friend.getPotionEffects());
     }
 
     public static void headGold(EventFriend friend) {
@@ -188,11 +182,11 @@ public final class TickEvents {
     }
 
     public static void rodIron(EventFriend friend) {
-        increaseEffect(PotionEffectType.INCREASE_DAMAGE, friend.getPotionEffects());
+        increaseEffect(PotionEffectType.STRENGTH, friend.getPotionEffects());
     }
 
     public static void headAlubronze(EventFriend friend) {
-        increaseEffect(PotionEffectType.INCREASE_DAMAGE, friend.getPotionEffects());
+        increaseEffect(PotionEffectType.STRENGTH, friend.getPotionEffects());
     }
 
     public static void rodSilver(EventFriend friend) {
@@ -200,7 +194,7 @@ public final class TickEvents {
     }
 
     public static void rodBillon(EventFriend friend) {
-        increaseEffect(PotionEffectType.JUMP, friend.getPotionEffects(), 4);
+        increaseEffect(PotionEffectType.JUMP_BOOST, friend.getPotionEffects(), 4);
     }
 
     public static void headBrass(EventFriend friend) {
@@ -214,12 +208,12 @@ public final class TickEvents {
     }
 
     public static void rodCorbronze(EventFriend friend) {
-        increaseEffect(PotionEffectType.CONFUSION, friend.getPotionEffects());
+        increaseEffect(PotionEffectType.NAUSEA, friend.getPotionEffects());
     }
 
     public static void headDuralium(EventFriend friend) {
         if (ItemUtils.isTinkersBroken(friend.getTool())) {
-            increaseEffect(PotionEffectType.SLOW_DIGGING, friend.getPotionEffects());
+            increaseEffect(PotionEffectType.MINING_FATIGUE, friend.getPotionEffects());
         }
     }
 
@@ -232,11 +226,11 @@ public final class TickEvents {
     }
 
     public static void headMetal(EventFriend friend) {
-        increaseEffect(PotionEffectType.FAST_DIGGING, friend.getPotionEffects(), 2);
+        increaseEffect(PotionEffectType.HASTE, friend.getPotionEffects(), 2);
     }
 
     public static void headMythril(EventFriend friend) {
-        increaseEffect(PotionEffectType.FAST_DIGGING, friend.getPotionEffects(), 2);
+        increaseEffect(PotionEffectType.HASTE, friend.getPotionEffects(), 2);
         increaseEffect(PotionEffectType.SPEED, friend.getPotionEffects());
     }
 
@@ -281,7 +275,7 @@ public final class TickEvents {
     }
 
     public static void rodSingIron(EventFriend friend) {
-        increaseEffect(PotionEffectType.INCREASE_DAMAGE, friend.getPotionEffects(), 2);
+        increaseEffect(PotionEffectType.STRENGTH, friend.getPotionEffects(), 2);
     }
 
     public static void rodMythril(EventFriend friend) {
@@ -318,7 +312,12 @@ public final class TickEvents {
                         Location location = l.getLocation().clone().add(rndX, rndY, rndZ);
                         if (entity.getWorld().getBlockAt(location).getType() == Material.AIR) {
                             entity.teleport(location);
-                            entity.getWorld().playEffect(friend.getPlayer().getLocation(), Effect.ENDEREYE_LAUNCH, 10);
+
+                            var world = entity.getWorld();
+                            var fxLoc = friend.getPlayer().getLocation();
+
+                            world.spawnParticle(Particle.PORTAL, fxLoc, 50, 0.5, 1, 0.5, 0.1);
+                            world.playSound(fxLoc, Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
                         }
                         break;
                     case 4:
@@ -340,11 +339,11 @@ public final class TickEvents {
     }
 
     public static void bindSlimesteel(EventFriend friend) {
-        increaseEffect(PotionEffectType.JUMP, friend.getPotionEffects(), 2);
+        increaseEffect(PotionEffectType.JUMP_BOOST, friend.getPotionEffects(), 2);
     }
 
     public static void headOsmiumSuperalloy(EventFriend friend) {
-        increaseEffect(PotionEffectType.SLOW_DIGGING, friend.getPotionEffects());
+        increaseEffect(PotionEffectType.MINING_FATIGUE, friend.getPotionEffects());
     }
 
     public static void rodStarDust(EventFriend friend) {
@@ -574,7 +573,7 @@ public final class TickEvents {
         if (environment == World.Environment.NETHER) {
             increaseEffect(PotionEffectType.SPEED, friend.getPotionEffects(), 2);
         } else if (environment == World.Environment.THE_END) {
-            increaseEffect(PotionEffectType.SLOW, friend.getPotionEffects());
+            increaseEffect(PotionEffectType.SLOWNESS, friend.getPotionEffects());
         }
     }
 
@@ -724,7 +723,7 @@ public final class TickEvents {
     }
 
     public static void plateOsmium(EventFriend friend) {
-        increaseEffect(PotionEffectType.SLOW, friend.getPotionEffects());
+        increaseEffect(PotionEffectType.SLOWNESS, friend.getPotionEffects());
     }
 
     public static void plateUnpatentabilum(EventFriend friend) {
@@ -752,7 +751,7 @@ public final class TickEvents {
     }
 
     public static void plateReinforcedSlimesteel(EventFriend friend) {
-        increaseEffect(PotionEffectType.JUMP, friend.getPotionEffects());
+        increaseEffect(PotionEffectType.JUMP_BOOST, friend.getPotionEffects());
         increaseEffect(PotionEffectType.SPEED, friend.getPotionEffects());
     }
 
@@ -783,7 +782,7 @@ public final class TickEvents {
 
     public static void plateBoomerite(EventFriend friend) {
         Player p = friend.getPlayer();
-        TNTPrimed tnt = (TNTPrimed) p.getWorld().spawnEntity(p.getLocation(), EntityType.PRIMED_TNT);
+        TNTPrimed tnt = (TNTPrimed) p.getWorld().spawnEntity(p.getLocation(), EntityType.TNT);
         tnt.setSource(friend.getPlayer());
         tnt.setVelocity(new Vector(p.getLocation().getDirection().getX(), 1, p.getLocation().getDirection().getZ()));
     }

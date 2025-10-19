@@ -5,6 +5,7 @@ import io.github.sefiraat.slimetinker.itemgroups.ItemGroups;
 import io.github.sefiraat.slimetinker.items.tinkermaterials.TinkerMaterialManager;
 import io.github.sefiraat.slimetinker.items.workstations.smeltery.DummySmeltery;
 import io.github.sefiraat.slimetinker.utils.ThemeUtils;
+import io.github.sefiraat.slimetinker.utils.Utils;
 import io.github.sefiraat.slimetinker.utils.enums.ThemeItemType;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -220,62 +221,62 @@ public final class Casts {
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_SHOVEL_HEAD = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_SHOVEL_HEAD, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_SHOVEL_HEAD.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_PICKAXE_HEAD = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_PICKAXE_HEAD, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_PICKAXE_HEAD.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_AXE_HEAD = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_AXE_HEAD, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_AXE_HEAD.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_HOE_HEAD = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_HOE_HEAD, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_HOE_HEAD.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_SWORD_BLADE = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_SWORD_BLADE, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_SWORD_BLADE.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_TOOL_ROD = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_TOOL_ROD, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_TOOL_ROD.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_HELM_PLATE = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_HELM_PLATE, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_HELM_PLATE.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_CHEST_PLATE = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_CHEST_PLATE, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_CHEST_PLATE.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_LEG_PLATE = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_LEG_PLATE, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_LEG_PLATE.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_BOOT_PLATE = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_BOOT_PLATE, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_BOOT_PLATE.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_MAIL_LINK = new ItemStack[]{
-        new SlimefunItemStack(SlimefunItems.BRASS_INGOT, 2), Dies.DIE_MAIL_LINK, null,
+        Utils.withAmount(SlimefunItems.BRASS_INGOT.asOne(), 2), Dies.DIE_MAIL_LINK.asOne(), null,
         null, null, null,
         null, null, null
     };
     protected static final ItemStack[] RECIPE_CAST_REPAIR_KIT = new ItemStack[]{
-        new ItemStack(Material.GOLD_INGOT, 2), Dies.DIE_REPAIR_KIT, null,
+        new ItemStack(Material.GOLD_INGOT, 2), Dies.DIE_REPAIR_KIT.asOne(), null,
         null, null, null,
         null, null, null
     };

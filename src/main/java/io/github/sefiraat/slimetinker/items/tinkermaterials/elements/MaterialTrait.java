@@ -218,7 +218,7 @@ public class MaterialTrait {
     protected static ItemStack[] propRecipe(SlimefunItemStack part, ItemStack stack) {
         return new ItemStack[]{
             null, null, null,
-            part, null, stack,
+            part.asOne(), null, stack,
             null, null, null
         };
     }

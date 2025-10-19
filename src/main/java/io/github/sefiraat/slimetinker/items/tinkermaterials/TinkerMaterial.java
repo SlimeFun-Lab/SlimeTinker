@@ -140,7 +140,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 headStack(this.id, "SWORD", SkullTextures.PART_SWORD_BLADE),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_SWORDBLADE, getLiquidItemStack(2)),
+                basicRecipe(Casts.CAST_SWORDBLADE.asOne(), getLiquidIS(2)),
                 this.id
             ).register(plugin);
 
@@ -148,7 +148,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 headStack(this.id, "HOE", SkullTextures.PART_HOE_HEAD),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_HOEHEAD, getLiquidItemStack(1)),
+                basicRecipe(Casts.CAST_HOEHEAD.asOne(), getLiquidIS(1)),
                 this.id
             ).register(plugin);
 
@@ -156,7 +156,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 headStack(this.id, "AXE", SkullTextures.PART_AXE_HEAD),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_AXEHEAD, getLiquidItemStack(1)),
+                basicRecipe(Casts.CAST_AXEHEAD.asOne(), getLiquidIS(1)),
                 this.id
             ).register(plugin);
 
@@ -164,7 +164,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 headStack(this.id, "PICK", SkullTextures.PART_PICKAXE_HEAD),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_PICKAXEHEAD, getLiquidItemStack(1)),
+                basicRecipe(Casts.CAST_PICKAXEHEAD.asOne(), getLiquidIS(1)),
                 this.id
             ).register(plugin);
 
@@ -172,7 +172,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 headStack(this.id, "SHOVEL", SkullTextures.PART_SHOVEL_HEAD),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_SHOVELHEAD, getLiquidItemStack(1)),
+                basicRecipe(Casts.CAST_SHOVELHEAD.asOne(), getLiquidIS(1)),
                 this.id
             ).register(plugin);
         }
@@ -196,7 +196,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 rodStack(this.id),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_TOOLROD, getLiquidItemStack(1)),
+                basicRecipe(Casts.CAST_TOOLROD.asOne(), getLiquidIS(1)),
                 this.id
             ).register(plugin);
         }
@@ -207,7 +207,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 platesStack(this.id, "HELMET", SkullTextures.PART_HELM_PLATES),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_HELM_PLATE, getLiquidItemStack(TinkerMaterialManager.AMOUNT_ARM_HELM)),
+                basicRecipe(Casts.CAST_HELM_PLATE.asOne(), getLiquidIS(TinkerMaterialManager.AMOUNT_ARM_HELM)),
                 this.id
             ).register(plugin);
 
@@ -215,7 +215,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 platesStack(this.id, "CHESTPLATE", SkullTextures.PART_CHEST_PLATES),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_CHEST_PLATE, getLiquidItemStack(TinkerMaterialManager.AMOUNT_ARM_CHEST)),
+                basicRecipe(Casts.CAST_CHEST_PLATE.asOne(), getLiquidIS(TinkerMaterialManager.AMOUNT_ARM_CHEST)),
                 this.id
             ).register(plugin);
 
@@ -223,7 +223,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 platesStack(this.id, "LEGGINGS", SkullTextures.PART_LEG_PLATES),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_LEG_PLATE, getLiquidItemStack(TinkerMaterialManager.AMOUNT_ARM_LEG)),
+                basicRecipe(Casts.CAST_LEG_PLATE.asOne(), getLiquidIS(TinkerMaterialManager.AMOUNT_ARM_LEG)),
                 this.id
             ).register(plugin);
 
@@ -231,7 +231,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 platesStack(this.id, "BOOTS", SkullTextures.PART_BOOTS_PLATES),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_BOOT_PLATE, getLiquidItemStack(TinkerMaterialManager.AMOUNT_ARM_BOOT)),
+                basicRecipe(Casts.CAST_BOOT_PLATE.asOne(), getLiquidIS(TinkerMaterialManager.AMOUNT_ARM_BOOT)),
                 this.id
             ).register(plugin);
         }
@@ -255,7 +255,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 linksStack(this.id),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_MAIL_LINK, getLiquidItemStack(TinkerMaterialManager.AMOUNT_ARM_LINKS)),
+                basicRecipe(Casts.CAST_MAIL_LINK.asOne(), getLiquidIS(TinkerMaterialManager.AMOUNT_ARM_LINKS)),
                 this.id
             ).register(plugin);
         }
@@ -266,7 +266,7 @@ public class TinkerMaterial {
                 ItemGroups.PART_DICT,
                 repairStack(this.id),
                 DummySmeltery.TYPE,
-                basicRecipe(Casts.CAST_REPAIRKIT, getLiquidItemStack(TinkerMaterialManager.AMOUNT_KIT)),
+                basicRecipe(Casts.CAST_REPAIRKIT.asOne(), getLiquidIS(TinkerMaterialManager.AMOUNT_KIT)),
                 this.id
             ).register(plugin);
         }
@@ -449,7 +449,12 @@ public class TinkerMaterial {
     }
 
     public SlimefunItemStack getLiquidItemStack(int amount) {
-        return new SlimefunItemStack(liquid.getItemStack(), amount);
+        SlimefunItemStack base = liquid.getItemStack();
+        return new SlimefunItemStack(base, amount);
+    }
+
+    public ItemStack getLiquidIS(int amount) {
+        return getLiquidItemStack(amount).item().clone();
     }
 
     public String getId() {
