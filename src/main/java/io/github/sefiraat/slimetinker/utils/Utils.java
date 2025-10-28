@@ -1,12 +1,34 @@
 package io.github.sefiraat.slimetinker.utils;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
+import org.bukkit.profile.PlayerTextures;
+
+import java.net.URI;
+import java.util.UUID;
 
 public class Utils {
-    public static ItemStack withAmount(ItemStack base, int amount) {
-        if (base == null) return null;
-        ItemStack copy = base.clone();
-        copy.setAmount(amount);
-        return copy;
+    private Utils() {}
+
+    public static ItemStack fromBase64Hash(String hash) {
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+
+        PlayerProfile profile = Bukkit.createPlayerProfile(UUID.randomUUID(), null);
+        PlayerTextures textures = profile.getTextures();
+
+        try {
+            textures.setSkin(URI.create("http://textures.minecraft.net/texture/" + hash).toURL());
+        } catch (Exception ignored) {
+            // nothing
+        }
+        profile.setTextures(textures);
+
+        meta.setOwnerProfile(profile);
+        head.setItemMeta(meta);
+        return head;
     }
 }
